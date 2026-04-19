@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { fineApi } from "../../services/api";
 import { FineSearchRequest } from "../../types";
@@ -138,7 +138,18 @@ const AdminFines: React.FC = () => {
     );
   }
 
-  const fines = finesData?.fines || [];
+  const rawFines = finesData?.fines || [];
+  const fines = useMemo(() => {
+    return [...rawFines].sort((a, b) => {
+      if (sortBy === "amount") return b.amount - a.amount;
+      if (sortBy === "user") {
+        const nameA = `${a.user?.firstName ?? ""} ${a.user?.lastName ?? ""}`.toLowerCase();
+        const nameB = `${b.user?.firstName ?? ""} ${b.user?.lastName ?? ""}`.toLowerCase();
+        return nameA.localeCompare(nameB);
+      }
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
+  }, [rawFines, sortBy]);
   const totalFines = fines.length;
   const totalAmount = fines.reduce((sum, fine) => sum + fine.amount, 0);
   const unpaidFines = fines.filter((f) => !f.isPaid);

@@ -66,15 +66,12 @@ export interface BookUpdateRequest {
 }
 
 export interface BookSearchRequest {
-  query?: string;
   search?: string;
   category?: string;
-  author?: string;
-  available?: boolean;
   page?: number;
   limit?: number;
-  sortBy?: "title" | "author" | "createdAt";
-  sortOrder?: "asc" | "desc";
+  sort?: "title" | "author" | "created_at";
+  order?: "asc" | "desc";
 }
 
 export interface BookSearchResponse {
@@ -103,7 +100,6 @@ export interface Borrow {
 
 export interface BorrowCreateRequest {
   bookId: number;
-  dueDate: string;
 }
 
 export interface BorrowReturnRequest {
@@ -239,10 +235,11 @@ export interface AdminStats {
   totalBooks: number;
   totalUsers: number;
   totalBorrows: number;
+  activeBorrows: number;
+  overdueBorrows: number;
   totalReservations: number;
   overdueBooks: number;
   totalFines: number;
-  activeUsers: number;
   popularBooks: Array<{
     book: Book;
     borrowCount: number;

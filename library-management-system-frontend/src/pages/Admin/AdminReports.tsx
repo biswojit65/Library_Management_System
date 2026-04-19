@@ -53,10 +53,11 @@ const AdminReports: React.FC = () => {
     totalBooks: 0,
     totalUsers: 0,
     totalBorrows: 0,
+    activeBorrows: 0,
+    overdueBorrows: 0,
     totalReservations: 0,
     overdueBooks: 0,
     totalFines: 0,
-    activeUsers: 0,
     popularBooks: [],
   };
 
@@ -239,17 +240,17 @@ const AdminReports: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">
-                Active Users
+                Active Borrows
               </span>
               <span className="text-sm font-medium text-foreground">
-                {reportData.activeUsers}
+                {reportData.activeBorrows}
               </span>
             </div>
             <div className="w-full bg-muted rounded-full h-2">
               <div
                 className="bg-green-500 h-2 rounded-full"
                 style={{
-                  width: `${Math.min((reportData.activeUsers / reportData.totalUsers) * 100, 100)}%`,
+                  width: `${Math.min((reportData.activeBorrows / reportData.totalBorrows) * 100, 100)}%`,
                 }}
               ></div>
             </div>

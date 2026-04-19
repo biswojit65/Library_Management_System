@@ -44,8 +44,8 @@ const BookDetail: React.FC = () => {
   });
 
   const borrowMutation = useMutation({
-    mutationFn: (dueDate: string) =>
-      borrowApi.createBorrow({ bookId: Number(id), dueDate }),
+    mutationFn: () =>
+      borrowApi.createBorrow({ bookId: Number(id) }),
     onSuccess: () => {
       toast.success("Book borrowed successfully!");
       queryClient.invalidateQueries({ queryKey: ["book", id] });
@@ -73,14 +73,9 @@ const BookDetail: React.FC = () => {
   const handleBorrow = async () => {
     if (!book) return;
 
-    const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + 14); // 2 weeks from now
-
     setIsBorrowing(true);
     try {
-      const borrow = await borrowMutation.mutateAsync(
-        dueDate.toISOString().split("T")[0],
-      );
+      const borrow = await borrowMutation.mutateAsync();
 
       // Trigger smart notification for successful borrow
       smartNotifications.borrowBook(borrow?.id || Date.now(), book.title);

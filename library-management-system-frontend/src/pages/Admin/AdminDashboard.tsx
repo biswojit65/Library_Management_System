@@ -59,7 +59,7 @@ const AdminDashboard: React.FC = () => {
     },
     {
       title: "Active Borrows",
-      value: stats?.totalBorrows || 0,
+      value: stats?.activeBorrows || 0,
       icon: Library,
       color: "bg-purple-500",
       href: "/admin/borrows",
@@ -86,11 +86,11 @@ const AdminDashboard: React.FC = () => {
       href: "/admin/fines",
     },
     {
-      title: "Active Users",
-      value: stats?.activeUsers || 0,
+      title: "Total Borrows",
+      value: stats?.totalBorrows || 0,
       icon: Activity,
       color: "bg-indigo-500",
-      href: "/admin/users",
+      href: "/admin/borrows",
     },
   ];
 

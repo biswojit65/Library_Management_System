@@ -26,8 +26,7 @@ type Borrow struct {
 }
 
 type BorrowCreateRequest struct {
-	BookID  uint      `json:"bookId" validate:"required"`
-	DueDate time.Time `json:"dueDate" validate:"required,gt=now"`
+	BookID uint `json:"bookId" validate:"required"`
 }
 
 type BorrowReturnRequest struct {

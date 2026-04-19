@@ -23,8 +23,7 @@ type Reservation struct {
 }
 
 type ReservationCreateRequest struct {
-	BookID          uint      `json:"bookId" validate:"required"`
-	ReservationDate time.Time `json:"reservationDate" validate:"required,gte=now"`
+	BookID uint `json:"bookId" validate:"required"`
 }
 
 type ReservationResponse struct {

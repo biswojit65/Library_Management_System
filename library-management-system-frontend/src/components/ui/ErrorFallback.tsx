@@ -1,14 +1,10 @@
 import React from "react";
 import { AlertTriangle } from "lucide-react";
+import { FallbackProps } from "react-error-boundary";
 import { Button } from "./button";
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
 
-interface ErrorFallbackProps {
-  error: Error;
-  resetErrorBoundary: () => void;
-}
-
-const ErrorFallback: React.FC<ErrorFallbackProps> = ({
+const ErrorFallback: React.FC<FallbackProps> = ({
   error,
   resetErrorBoundary,
 }) => {
@@ -32,8 +28,8 @@ const ErrorFallback: React.FC<ErrorFallbackProps> = ({
                 Error Details
               </summary>
               <pre className="mt-2 p-2 bg-muted rounded text-xs overflow-auto">
-                {error.message}
-                {error.stack && "\n\n" + error.stack}
+                {error instanceof Error ? error.message : String(error)}
+                {error instanceof Error && error.stack && "\n\n" + error.stack}
               </pre>
             </details>
           )}

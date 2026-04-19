@@ -21,8 +21,8 @@ const Books: React.FC = () => {
   const [searchParams, setSearchParams] = useState<BookSearchRequest>({
     page: 1,
     limit: 12,
-    sortBy: "title",
-    sortOrder: "asc",
+    sort: "title",
+    order: "asc",
   });
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
@@ -130,7 +130,7 @@ const Books: React.FC = () => {
 
               <Select
                 onValueChange={(value) =>
-                  handleFilter({ sortBy: value as any })
+                  handleFilter({ sort: value as any })
                 }
               >
                 <SelectTrigger className="w-full sm:w-[180px]">
@@ -139,7 +139,7 @@ const Books: React.FC = () => {
                 <SelectContent>
                   <SelectItem value="title">Sort by Title</SelectItem>
                   <SelectItem value="author">Sort by Author</SelectItem>
-                  <SelectItem value="createdAt">Sort by Date Added</SelectItem>
+                  <SelectItem value="created_at">Sort by Date Added</SelectItem>
                 </SelectContent>
               </Select>
             </div>

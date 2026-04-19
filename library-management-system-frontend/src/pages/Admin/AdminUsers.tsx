@@ -4,29 +4,20 @@ import { userApi } from "../../services/api";
 import { User } from "../../types";
 import {
   Search,
-  Edit,
   Trash2,
   Eye,
   User as UserIcon,
   Mail,
-  Phone,
   Shield,
   Calendar,
   CheckCircle,
   XCircle,
-  MoreHorizontal,
-  Zap,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
+import { Card } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
 import {
   Dialog,
