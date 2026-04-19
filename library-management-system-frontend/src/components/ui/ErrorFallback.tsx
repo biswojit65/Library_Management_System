@@ -28,8 +28,13 @@ const ErrorFallback: React.FC<FallbackProps> = ({
                 Error Details
               </summary>
               <pre className="mt-2 p-2 bg-muted rounded text-xs overflow-auto">
+<<<<<<< HEAD
                 {error instanceof Error ? error.message : String(error)}
                 {error instanceof Error && error.stack && "\n\n" + error.stack}
+=======
+                {error.message}
+                {error.stack && "\n\n" + error.stack}
+>>>>>>> 5ce356443aabbbcf8d7d348947d0d00ac16f12ef
               </pre>
             </details>
           )}
