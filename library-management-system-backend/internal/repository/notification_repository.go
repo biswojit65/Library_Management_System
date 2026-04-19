@@ -176,7 +176,7 @@ func (r *NotificationRepository) CreateBookReturnReminder(ctx context.Context, u
 		Category:   "borrow",
 		EntityID:   &borrowID,
 		EntityType: "borrow",
-		ActionURL:  fmt.Sprintf("/borrows"),
+		ActionURL:  "/borrows",
 		IsRead:     false,
 	}
 
@@ -195,7 +195,7 @@ func (r *NotificationRepository) CreateOverdueNotification(ctx context.Context, 
 		Category:   "borrow",
 		EntityID:   &borrowID,
 		EntityType: "borrow",
-		ActionURL:  fmt.Sprintf("/borrows"),
+		ActionURL:  "/borrows",
 		IsRead:     false,
 	}
 
@@ -214,7 +214,7 @@ func (r *NotificationRepository) CreateReservationAvailableNotification(ctx cont
 		Category:   "reservation",
 		EntityID:   &reservationID,
 		EntityType: "reservation",
-		ActionURL:  fmt.Sprintf("/reservations"),
+		ActionURL:  "/reservations",
 		IsRead:     false,
 	}
 
@@ -233,7 +233,7 @@ func (r *NotificationRepository) CreateFineNotification(ctx context.Context, use
 		Category:   "fine",
 		EntityID:   &fineID,
 		EntityType: "fine",
-		ActionURL:  fmt.Sprintf("/fines"),
+		ActionURL:  "/fines",
 		IsRead:     false,
 	}
 

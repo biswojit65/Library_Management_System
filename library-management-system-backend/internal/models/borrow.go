@@ -134,7 +134,7 @@ func (b *Borrow) GetDaysUntilDue() int {
 	if b.IsReturned() {
 		return 0
 	}
-	days := int(b.DueDate.Sub(time.Now()).Hours() / 24)
+	days := int(time.Until(b.DueDate).Hours() / 24)
 	if days < 0 {
 		return 0
 	}

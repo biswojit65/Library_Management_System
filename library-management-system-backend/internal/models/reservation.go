@@ -97,7 +97,7 @@ func (r *Reservation) GetDaysUntilExpiry() int {
 	if r.IsExpired() {
 		return 0
 	}
-	days := int(r.ExpiresAt.Sub(time.Now()).Hours() / 24)
+	days := int(time.Until(r.ExpiresAt).Hours() / 24)
 	if days < 0 {
 		return 0
 	}
